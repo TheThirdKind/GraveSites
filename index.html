@@ -60,28 +60,6 @@
       from { transform: translateX(0); }
       to { transform: translateX(-100%); }
     }
-
-.vhs-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  pointer-events: none;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.12) 1px,
-    transparent 1px
-  );
-  background-size: 100% 2px; /* lock spacing */
-  opacity: 0.5;
-  animation: flicker 0.25s steps(1, end) infinite;
-}
-@keyframes flicker {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.7; }
-}
     
   </style>
 </head>
@@ -109,8 +87,6 @@
     remember the soft hues from the monitor / when you loaded up Club Penguin / saw the cheerful grins / and lived out your digital lives / now digital waste // remember that tumblr account / the twitter page /
   </div>
 </div>
-
-<div class="vhs-overlay"></div>
 
 
 <script>

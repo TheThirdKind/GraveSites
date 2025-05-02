@@ -134,11 +134,33 @@
 </div>
 
 <button class="return-button" onclick="window.location.href='https://thethirdkind.neocities.org/'">
+  Return
+</button>
 
 <script>
   const model = document.getElementById("myModel");
-  model.addEventListener("click", () => {
-    window.open("https://en.wikipedia.org/wiki/Category:Defunct_websites", "_blank");
+  const threshold = 5; // pixels of movement allowed
+
+  let startX = 0;
+  let startY = 0;
+  let isClick = false;
+
+  model.addEventListener("pointerdown", (e) => {
+    startX = e.clientX;
+    startY = e.clientY;
+    isClick = true;
+  });
+
+  model.addEventListener("pointermove", (e) => {
+    if (Math.abs(e.clientX - startX) > threshold || Math.abs(e.clientY - startY) > threshold) {
+      isClick = false;
+    }
+  });
+
+  model.addEventListener("pointerup", (e) => {
+    if (isClick) {
+      window.open("https://en.wikipedia.org/wiki/Category:Defunct_websites", "_blank");
+    }
   });
 </script>
 
@@ -153,10 +175,12 @@
       });
       hasPlayed = true;
       window.removeEventListener('mousemove', playMusicOnce);
+      window.removeEventListener('click', playMusicOnce);
     }
   }
 
   window.addEventListener('mousemove', playMusicOnce);
+  window.addEventListener('click', playMusicOnce);
 </script> 
 </body>
 </html>

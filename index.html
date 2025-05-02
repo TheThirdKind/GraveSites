@@ -164,23 +164,21 @@
   });
 </script>
 
- <script>
+<!-- Add a visible play button users can click -->
+<button id="play-music" class="return-button" style="top: 50px; left: 10px; bottom: auto;">
+  ▶ Play Music
+</button>
+
+<script>
   const bgMusic = document.getElementById('bg-music');
-  let hasPlayed = false;
+  const playButton = document.getElementById('play-music');
 
-  function playMusicOnce() {
-    if (!hasPlayed) {
-      bgMusic.play().catch((e) => {
-        console.warn('Autoplay failed:', e);
-      });
-      hasPlayed = true;
-      window.removeEventListener('mousemove', playMusicOnce);
-      window.removeEventListener('click', playMusicOnce);
-    }
-  }
+  playButton.addEventListener('click', () => {
+    bgMusic.play().catch((e) => {
+      console.warn('Autoplay blocked:', e);
+    });
+  });
+</script>
 
-  window.addEventListener('mousemove', playMusicOnce);
-  window.addEventListener('click', playMusicOnce);
-</script> 
 </body>
 </html>
